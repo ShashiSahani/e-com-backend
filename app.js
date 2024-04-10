@@ -1,6 +1,6 @@
 require('dotenv').config();
-
-const PORT =process.env.PORT|| 8000;
+const BASE_URL=process.env.BASE_URL
+const PORT = process.env.PORT|| 8000;
 
 const express = require("express");
 const app = express();
@@ -14,7 +14,6 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-
 // database connection with MongoDB
 mongoose
   .connect(
@@ -56,7 +55,7 @@ app.use("/images", express.static("upload/images"));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${PORT}/images/${req.file.filename}`,
+    image_url: `${BASE_URL}${PORT}/images/${req.file.filename}`,
   });
 });
 
