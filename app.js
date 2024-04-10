@@ -14,8 +14,6 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-console.log("DB_CONNECTION_STRING:", process.env.DB_CONNECTION_STRING);
-console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 // database connection with MongoDB
 mongoose
